@@ -1,7 +1,7 @@
-package me.ppting.okhttpdemo.login.presenter;
+package me.ppting.gank.login.presenter;
 
-import me.ppting.okhttpdemo.base.BasePresenter;
-import me.ppting.okhttpdemo.base.BaseView;
+import me.ppting.gank.base.BasePresenter;
+import me.ppting.gank.base.BaseView;
 import org.json.JSONObject;
 
 /**

@@ -1,13 +1,13 @@
-package me.ppting.okhttpdemo.base;
+package me.ppting.gank.base;
 
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import java.io.IOException;
-import me.ppting.okhttpdemo.http.Callback;
-import me.ppting.okhttpdemo.http.HttpUtils;
-import me.ppting.okhttpdemo.http.RequestParams;
-import me.ppting.okhttpdemo.util.NetUtil;
+import me.ppting.gank.http.Callback;
+import me.ppting.gank.http.HttpUtils;
+import me.ppting.gank.http.RequestParams;
+import me.ppting.gank.util.NetUtil;
 import okhttp3.Call;
 import okhttp3.Response;
 import org.json.JSONObject;

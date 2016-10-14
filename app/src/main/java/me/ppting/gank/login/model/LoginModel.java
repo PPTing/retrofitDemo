@@ -1,8 +1,7 @@
-package me.ppting.okhttpdemo.login.model;
+package me.ppting.gank.login.model;
 
-import me.ppting.okhttpdemo.base.BaseModel;
+import me.ppting.gank.base.BaseModel;
 import org.json.JSONObject;
-import retrofit2.Response;
 
 /**
  * Created by PPTing on 2016/9/29.

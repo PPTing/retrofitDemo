@@ -1,11 +1,11 @@
-package me.ppting.okhttpdemo.login.model;
+package me.ppting.gank.login.model;
 
 import android.util.Log;
 import java.io.IOException;
-import me.ppting.okhttpdemo.http.HttpUtil_218;
-import me.ppting.okhttpdemo.http.HttpUtil_Gank;
-import me.ppting.okhttpdemo.http.HttpUtil_Github;
-import me.ppting.okhttpdemo.http.RequestParams;
+import me.ppting.gank.http.HttpUtil_Gank;
+import me.ppting.gank.http.HttpUtil_218;
+import me.ppting.gank.http.HttpUtil_Github;
+import me.ppting.gank.http.RequestParams;
 import okhttp3.ResponseBody;
 import org.json.JSONException;
 import org.json.JSONObject;

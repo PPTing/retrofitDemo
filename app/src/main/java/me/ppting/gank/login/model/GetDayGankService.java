@@ -1,6 +1,6 @@
-package me.ppting.okhttpdemo.login.model;
+package me.ppting.gank.login.model;
 
-import me.ppting.okhttpdemo.util.NetUtil;
+import me.ppting.gank.util.NetUtil;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;

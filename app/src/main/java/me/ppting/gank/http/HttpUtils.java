@@ -1,13 +1,13 @@
-package me.ppting.okhttpdemo.http;
+package me.ppting.gank.http;
 
 import android.content.Context;
 import android.util.Log;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
-import me.ppting.okhttpdemo.util.NetUtil;
-import me.ppting.okhttpdemo.util.NetWorkUtil;
-import me.ppting.okhttpdemo.util.OkHttpApplication;
+import me.ppting.gank.util.Gank;
+import me.ppting.gank.util.NetUtil;
+import me.ppting.gank.util.NetWorkUtil;
 import okhttp3.Cache;
 import okhttp3.CacheControl;
 import okhttp3.Call;
@@ -30,7 +30,7 @@ public class HttpUtils {
 
 
     private static volatile HttpUtils instance = null;
-    private Context context = OkHttpApplication.context;
+    private Context context = Gank.context;
     private static final String TAG = "HttpUtils";
 
     public static HttpUtils getInstance(){
@@ -52,7 +52,7 @@ public class HttpUtils {
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.HEADERS)
             .setLevel(HttpLoggingInterceptor.Level.BODY);
 
-        File responseCache = new File(OkHttpApplication.context.getCacheDir(),"responseCache");
+        File responseCache = new File(Gank.context.getCacheDir(),"responseCache");
         int cacheSize = 10 * 1024 * 1024;//10M
         Cache cache = new Cache(responseCache,cacheSize);
         mOkHttpClient = new OkHttpClient.Builder()

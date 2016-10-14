@@ -1,4 +1,4 @@
-package me.ppting.okhttpdemo.login.model;
+package me.ppting.gank.login.model;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;

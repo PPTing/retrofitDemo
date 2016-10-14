@@ -1,6 +1,6 @@
-package me.ppting.okhttpdemo.http;
+package me.ppting.gank.http;
 
-import me.ppting.okhttpdemo.util.NetUtil;
+import me.ppting.gank.util.NetUtil;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -8,23 +8,27 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by PPTing on 2016/10/13.
  */
 
-public class HttpUtil_Github {
+public class HttpUtil_218 {
+
     private Retrofit retrofit;
-    private static volatile HttpUtil_Github instance = null;
-    public HttpUtil_Github() {
+    private static volatile HttpUtil_218 instance = null;
+    public HttpUtil_218() {
+
+
+
         retrofit = new Retrofit.Builder()
-            .baseUrl(NetUtil.GITHUB)
+            .baseUrl(NetUtil.BASE_218)
             .addConverterFactory(GsonConverterFactory.create())
             .build();
     }
 
-    public static HttpUtil_Github getInstance(){
-        HttpUtil_Github mInstance = instance;
+    public static HttpUtil_218 getInstance(){
+        HttpUtil_218 mInstance = instance;
         if (mInstance == null){
-            synchronized (HttpUtil_Github.class){
+            synchronized (HttpUtil_218.class){
                 mInstance = instance;
                 if (mInstance == null){
-                    mInstance = new HttpUtil_Github();
+                    mInstance = new HttpUtil_218();
                     instance = mInstance;
                 }
             }
@@ -35,4 +39,5 @@ public class HttpUtil_Github {
     public <T> T create(Class<T> service) {
         return retrofit.create(service);
     }
+
 }

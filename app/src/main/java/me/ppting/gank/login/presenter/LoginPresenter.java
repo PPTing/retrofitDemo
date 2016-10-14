@@ -1,8 +1,8 @@
-package me.ppting.okhttpdemo.login.presenter;
+package me.ppting.gank.login.presenter;
 
 import android.text.TextUtils;
-import me.ppting.okhttpdemo.login.model.LoginModel;
-import me.ppting.okhttpdemo.login.model.LoginModelImpl;
+import me.ppting.gank.login.model.LoginModel;
+import me.ppting.gank.login.model.LoginModelImpl;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -10,7 +10,7 @@ import org.json.JSONObject;
  * Created by PPTing on 2016/9/26.
  */
 
-public class LoginPresenter implements LoginContract.Presenter, LoginModel.LoginModelCallback{
+public class LoginPresenter implements LoginContract.Presenter, LoginModel.LoginModelCallback {
 
     private LoginContract.View mView;
     private LoginModelImpl loginModelImpl;

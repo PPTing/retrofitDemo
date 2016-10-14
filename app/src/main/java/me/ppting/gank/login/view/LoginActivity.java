@@ -1,14 +1,14 @@
-package me.ppting.okhttpdemo.login.view;
+package me.ppting.gank.login.view;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import me.ppting.okhttpdemo.R;
-import me.ppting.okhttpdemo.base.BaseActivity;
-import me.ppting.okhttpdemo.login.presenter.LoginContract;
-import me.ppting.okhttpdemo.login.presenter.LoginPresenter;
+import me.ppting.gank.R;
+import me.ppting.gank.base.BaseActivity;
+import me.ppting.gank.login.presenter.LoginContract;
+import me.ppting.gank.login.presenter.LoginPresenter;
 import org.json.JSONObject;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener,LoginContract.View{

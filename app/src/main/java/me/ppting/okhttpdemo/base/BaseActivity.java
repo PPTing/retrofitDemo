@@ -1,4 +1,4 @@
-package me.ppting.okhttpdemo;
+package me.ppting.okhttpdemo.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

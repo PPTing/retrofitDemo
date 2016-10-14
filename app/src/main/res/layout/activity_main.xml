@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="me.ppting.okhttpdemo.login.MainActivity">
+    tools:context="me.ppting.okhttpdemo.login.view.LoginActivity">
     <EditText
         android:id="@+id/username"
         android:layout_width="match_parent"
@@ -19,16 +19,21 @@
         android:id="@+id/get"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="get"/>
+        android:text="getDailyGank"/>
     <Button
         android:id="@+id/post"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="post"/>
+        android:text="post2gank"/>
     <Button
-        android:id="@+id/https"
+        android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="https"/>
+        android:text="login_with_post_2_218"/>
+    <Button
+        android:id="@+id/repo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="get_github_repo"/>
 
 </LinearLayout>

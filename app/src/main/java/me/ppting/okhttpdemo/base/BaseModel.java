@@ -1,4 +1,4 @@
-package me.ppting.okhttpdemo.util;
+package me.ppting.okhttpdemo.base;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -7,6 +7,7 @@ import java.io.IOException;
 import me.ppting.okhttpdemo.http.Callback;
 import me.ppting.okhttpdemo.http.HttpUtils;
 import me.ppting.okhttpdemo.http.RequestParams;
+import me.ppting.okhttpdemo.util.NetUtil;
 import okhttp3.Call;
 import okhttp3.Response;
 import org.json.JSONObject;

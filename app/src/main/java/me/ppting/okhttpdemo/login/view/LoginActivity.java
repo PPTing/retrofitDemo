@@ -5,20 +5,20 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import me.ppting.okhttpdemo.BaseActivity;
 import me.ppting.okhttpdemo.R;
+import me.ppting.okhttpdemo.base.BaseActivity;
 import me.ppting.okhttpdemo.login.presenter.LoginContract;
 import me.ppting.okhttpdemo.login.presenter.LoginPresenter;
-import me.ppting.okhttpdemo.util.NetUtil;
 import org.json.JSONObject;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener,LoginContract.View{
 
     private Button mPostButton;
     private Button mGetButton;
-    private Button mHttpsButton;
+    private Button mLoginButton;
     private EditText mUsername;
     private EditText mPassword;
+    private Button mRepoButton;
 
     private final static String TAG = LoginActivity.class.getName();
     private LoginPresenter loginPresenter;
@@ -39,10 +39,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         loginPresenter = new LoginPresenter(this);
         mPostButton = (Button) findViewById(R.id.post);
         mGetButton = (Button) findViewById(R.id.get);
-        mHttpsButton = (Button) findViewById(R.id.https);
+        mLoginButton = (Button) findViewById(R.id.login);
+        mRepoButton = (Button) findViewById(R.id.repo);
         mPostButton.setOnClickListener(this);
         mGetButton.setOnClickListener(this);
-        mHttpsButton.setOnClickListener(this);
+        mLoginButton.setOnClickListener(this);
+        mRepoButton.setOnClickListener(this);
         mUsername = (EditText) findViewById(R.id.username);
         mPassword = (EditText) findViewById(R.id.password);
     }
@@ -51,14 +53,16 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     @Override public void onClick(View v) {
         switch (v.getId()){
             case R.id.get:
-                loginPresenter.login(NetUtil.HttpMethod.GET,mUsername.getText().toString(),mPassword.getText().toString());
+                loginPresenter.getDayGank("2016","09","10");
                 break;
             case R.id.post:
-                loginPresenter.login(NetUtil.HttpMethod.POST,mUsername.getText().toString(),mPassword.getText().toString());
-
+                loginPresenter.post("https://google.com","描述","id","Android",true);
                 break;
-            case R.id.https:
+            case R.id.login:
+                loginPresenter.login(mUsername.getText().toString(),mPassword.getText().toString());
                 break;
+            case R.id.repo:
+                loginPresenter.getRepo("tingya");
             default:
                 break;
         }
@@ -73,6 +77,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     @Override public void loginFailed(JSONObject data) {
         Log.d(TAG,data.toString());
     }
+
 
 
     @Override public void emptyUsername() {

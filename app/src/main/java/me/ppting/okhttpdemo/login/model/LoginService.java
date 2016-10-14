@@ -12,7 +12,7 @@ import retrofit2.http.QueryMap;
  */
 
 public interface LoginService {
-    @POST("/aisports-api/api/login")
+    @GET("/aisports-api/api/login")
     Call<ResponseBody> getLoginInfo(@QueryMap Map<String,Object> map);
 
 

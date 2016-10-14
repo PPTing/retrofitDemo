@@ -49,12 +49,12 @@ public class HttpUtils {
 
     public HttpUtils(){
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.HEADERS)
+            .setLevel(HttpLoggingInterceptor.Level.BODY);
 
         File responseCache = new File(OkHttpApplication.context.getCacheDir(),"responseCache");
         int cacheSize = 10 * 1024 * 1024;//10M
         Cache cache = new Cache(responseCache,cacheSize);
-        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.HEADERS)
-            .setLevel(HttpLoggingInterceptor.Level.BODY);
         mOkHttpClient = new OkHttpClient.Builder()
             .addNetworkInterceptor(httpLoggingInterceptor)
             .addInterceptor(interceptor)

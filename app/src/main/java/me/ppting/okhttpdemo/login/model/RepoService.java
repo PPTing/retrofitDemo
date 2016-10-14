@@ -11,6 +11,6 @@ import retrofit2.http.Path;
 
 public interface RepoService {
     //如果有前缀 / 就代表着是一个绝对路径。删除了那个前缀的 /， 你将会得到正确的、包含了 v3 路径的全 URL。
-    @GET("{user}/repos")
+    @GET("/users/{user}/repos")
     Call<ResponseBody> listRepo(@Path("user") String user);
 }

@@ -34,6 +34,7 @@ public class LoginModelImpl extends LoginModel {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
+                    Log.d(TAG,"url "+call.request().url());
                     loginModelCallback.loginInfo(new JSONObject(response.body().string()));
                 } catch (IOException e ) {
                     e.printStackTrace();
@@ -102,6 +103,7 @@ public class LoginModelImpl extends LoginModel {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
+                    Log.d(TAG,"url "+call.request().url());
                     Log.d(TAG,response.body().string());
                 } catch (IOException e) {
                     e.printStackTrace();

@@ -1,5 +1,6 @@
 package me.ppting.gank.login.presenter;
 
+import java.io.File;
 import me.ppting.gank.base.BasePresenter;
 import me.ppting.gank.base.BaseView;
 import org.json.JSONObject;
@@ -22,5 +23,7 @@ public interface LoginContract {
         void post(String url, String desc, String who, String type, boolean debug);
         void getDayGank(String year, String month, String day);
         void getRepo(String tingya);
+        void upload(File file);
+        void uploadMoreFile(File file1, File file2);
     }
 }

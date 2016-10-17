@@ -7,7 +7,6 @@ import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
-import retrofit2.http.QueryMap;
 
 /**
  * Created by PPTing on 2016/10/13.

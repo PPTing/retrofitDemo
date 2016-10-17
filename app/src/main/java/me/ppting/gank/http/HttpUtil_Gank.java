@@ -3,11 +3,13 @@ package me.ppting.gank.http;
 import android.util.Log;
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 import me.ppting.gank.util.Gank;
 import me.ppting.gank.util.NetUtil;
 import me.ppting.gank.util.NetWorkUtil;
 import okhttp3.Cache;
 import okhttp3.CacheControl;
+import okhttp3.CertificatePinner;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -29,8 +31,7 @@ public class HttpUtil_Gank {
 
         //http log 拦截器
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
-        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.HEADERS)
-            .setLevel(HttpLoggingInterceptor.Level.BODY);
+        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         //缓存
         File responseCache = new File(Gank.context.getCacheDir(),"responseCache");
         int cacheSize = 10 * 1024 * 1024;//10M
@@ -41,6 +42,7 @@ public class HttpUtil_Gank {
             .addInterceptor(interceptor)
             .addNetworkInterceptor(httpLoggingInterceptor)
             .cache(cache)
+            .connectTimeout(10, TimeUnit.SECONDS)
             .build();
 
         retrofit = new Retrofit.Builder()

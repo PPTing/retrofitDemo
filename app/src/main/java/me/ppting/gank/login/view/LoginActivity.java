@@ -1,10 +1,12 @@
 package me.ppting.gank.login.view;
 
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import java.io.File;
 import me.ppting.gank.R;
 import me.ppting.gank.base.BaseActivity;
 import me.ppting.gank.login.presenter.LoginContract;
@@ -19,6 +21,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     private EditText mUsername;
     private EditText mPassword;
     private Button mRepoButton;
+    private Button mUploadButton;
+    private Button mUploadMoreButton;
 
     private final static String TAG = LoginActivity.class.getName();
     private LoginPresenter loginPresenter;
@@ -41,10 +45,14 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         mGetButton = (Button) findViewById(R.id.get);
         mLoginButton = (Button) findViewById(R.id.login);
         mRepoButton = (Button) findViewById(R.id.repo);
+        mUploadButton = (Button) findViewById(R.id.upload);
+        mUploadMoreButton = (Button) findViewById(R.id.uploadMore);
         mPostButton.setOnClickListener(this);
         mGetButton.setOnClickListener(this);
         mLoginButton.setOnClickListener(this);
         mRepoButton.setOnClickListener(this);
+        mUploadButton.setOnClickListener(this);
+        mUploadMoreButton.setOnClickListener(this);
         mUsername = (EditText) findViewById(R.id.username);
         mPassword = (EditText) findViewById(R.id.password);
     }
@@ -63,6 +71,16 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 break;
             case R.id.repo:
                 loginPresenter.getRepo("tingya");
+                break;
+            case R.id.upload:
+                File file = new File(Environment.getExternalStorageDirectory() + "/icon_equipment.png");
+                loginPresenter.upload(file);
+                break;
+            case R.id.uploadMore:
+                File firstFile1 = new File(Environment.getExternalStorageDirectory() + "/icon_equipment.png");
+                File firstFile2 = new File(Environment.getExternalStorageDirectory() + "/icon_cupboard.png");
+                loginPresenter.uploadMoreFile(firstFile1,firstFile2);
+                break;
             default:
                 break;
         }

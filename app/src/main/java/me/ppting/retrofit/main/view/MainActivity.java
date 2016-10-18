@@ -8,26 +8,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import me.ppting.retrofit.R;
 import me.ppting.retrofit.base.BaseActivity;
-import me.ppting.retrofit.http.HttpUtil_Gank;
-import me.ppting.retrofit.http.RequestParams;
 import me.ppting.retrofit.main.bean.DayGankInfo;
 import me.ppting.retrofit.main.bean.Post2GankInfo;
 import me.ppting.retrofit.main.bean.UploadInfo;
 import me.ppting.retrofit.main.presenter.MainContract;
 import me.ppting.retrofit.main.presenter.MainPresenter;
-import me.ppting.retrofit.service.GankService;
-import me.ppting.retrofit.util.NetUtil;
-import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener,MainContract.View{
 

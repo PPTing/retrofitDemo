@@ -7,6 +7,7 @@ import retrofit2.http.Path;
 
 /**
  * Created by PPTing on 2016/10/18.
+ * 测试 get 请求
  */
 
 public interface GithubService {

@@ -12,6 +12,7 @@ import retrofit2.http.PartMap;
 
 /**
  * Created by PPTing on 2016/10/18.
+ * 测试文件上传
  */
 
 public interface Stay4ItService {

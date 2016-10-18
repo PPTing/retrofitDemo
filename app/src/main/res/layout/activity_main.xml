@@ -7,36 +7,26 @@
         android:id="@+id/get"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="getDailyGank"/>
+        android:text="获取20160910的干货"/>
     <Button
         android:id="@+id/post"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="post retrofit mvp"/>
-    <Button
-        android:id="@+id/post_without_mvp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="post retrofit without mvp"/>
-    <Button
-        android:id="@+id/post_only_okhttp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="只使用 okhttp "/>
+        android:text="使用post方法向gank提交"/>
     <Button
         android:id="@+id/repo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="get_github_repo"/>
+        android:text="获取yingya的github repo"/>
     <Button
         android:id="@+id/upload"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="上传"/>
+        android:text="上传一张图片，附加文字描述"/>
     <Button
         android:id="@+id/uploadMore"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="多个文件"/>
+        android:text="上传多个文件"/>
 
 </LinearLayout>

@@ -10,11 +10,11 @@ import android.text.TextUtils;
 import android.util.Log;
 import java.io.File;
 import java.util.List;
-import me.ppting.retrofit.main.model.DayGankInfo;
+import me.ppting.retrofit.main.bean.DayGankInfo;
+import me.ppting.retrofit.main.bean.Post2GankInfo;
+import me.ppting.retrofit.main.bean.UploadInfo;
 import me.ppting.retrofit.main.model.MainModel;
 import me.ppting.retrofit.main.model.MainModelImpl;
-import me.ppting.retrofit.main.model.Post2GankInfo;
-import me.ppting.retrofit.main.model.UploadInfo;
 
 /**
  * Created by PPTing on 2016/9/26.

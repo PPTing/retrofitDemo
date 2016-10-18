@@ -5,9 +5,10 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import me.ppting.retrofit.http.HttpUtil_Gank;
-import me.ppting.retrofit.http.HttpUtil_Github;
 import me.ppting.retrofit.http.RequestParams;
+import me.ppting.retrofit.main.bean.DayGankInfo;
+import me.ppting.retrofit.main.bean.Post2GankInfo;
+import me.ppting.retrofit.main.bean.UploadInfo;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -34,7 +35,7 @@ public class MainModelImpl extends MainModel {
      * @param user
      */
     @Override public void getRepo(String user) {
-        RepoService repoService = HttpUtil_Github.getInstance().create(RepoService.class);
+
         Call<ResponseBody> call = repoService.listRepo(user);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -69,14 +70,13 @@ public class MainModelImpl extends MainModel {
      * @param debug
      */
     public void post(String url, String desc, String who, String type, boolean debug) {
-        Add2GankService add2GankService = HttpUtil_Gank.getInstance().create(Add2GankService.class);
         RequestParams requestParams = new RequestParams();
         requestParams.addRequestParams("url",url);
         requestParams.addRequestParams("desc",desc);
         requestParams.addRequestParams("who",who);
         requestParams.addRequestParams("type",type);
         requestParams.addRequestParams("debug",debug);
-        Call<Post2GankInfo> call = add2GankService.add2Gank(requestParams.getMap());
+        Call<Post2GankInfo> call = gankService.add2Gank(requestParams.getMap());
         call.enqueue(new Callback<Post2GankInfo>() {
             @Override
             public void onResponse(Call<Post2GankInfo> call, Response<Post2GankInfo> response) {
@@ -99,8 +99,7 @@ public class MainModelImpl extends MainModel {
      * @param day
      */
     public void getDayGank(String year, String month, String day) {
-        GetDayGankService getDayGankService = HttpUtil_Gank.getInstance().create(GetDayGankService.class);
-        Call<DayGankInfo> call = getDayGankService.getDayGank(year,month,day);
+        Call<DayGankInfo> call = gankService.getDayGank(year,month,day);
         call.enqueue(new Callback<DayGankInfo>() {
             @Override
             public void onResponse(Call<DayGankInfo> call, Response<DayGankInfo> response) {
@@ -128,9 +127,9 @@ public class MainModelImpl extends MainModel {
         //设置 requestFile 的 Content-Disposition form-data; name="pic"; filename="icon_equipment.png"
         MultipartBody.Part body = MultipartBody.Part.createFormData("pic", file.getName(), requestFile);
 
-        UploadFileService uploadFileService = HttpUtil_Gank.getInstance().create(UploadFileService.class);
 
-        Call<UploadInfo> call = uploadFileService.upload(
+
+        Call<UploadInfo> call = stay4ItService.upload(
             RequestBody.create(MediaType.parse("multipart/form-data"), "token value jai485789hqn485yhhwb "),//携带的文字信息
             body);
 
@@ -158,8 +157,7 @@ public class MainModelImpl extends MainModel {
             map.put(file.getName()+"\";filename=\""+file.getName(),RequestBody.create(MediaType.parse("image/png"),file));
         }
 
-        UploadMoreFileService uploadMoreFileService = HttpUtil_Gank.getInstance().create(UploadMoreFileService.class);
-        Call<UploadInfo> call = uploadMoreFileService.uploadMore(map);
+        Call<UploadInfo> call = stay4ItService.uploadMore(map);
         call.enqueue(new Callback<UploadInfo>() {
             @Override public void onResponse(Call<UploadInfo> call, Response<UploadInfo> response) {
                 mainModelCallback.uploadFile(response.body());

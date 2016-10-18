@@ -1,4 +1,4 @@
-package me.ppting.retrofit.main.model;
+package me.ppting.retrofit.main.bean;
 
 /**
  * Created by PPTing on 2016/10/18.

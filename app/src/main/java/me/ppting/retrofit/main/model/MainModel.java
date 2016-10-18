@@ -3,6 +3,9 @@ package me.ppting.retrofit.main.model;
 import java.io.File;
 import java.util.List;
 import me.ppting.retrofit.base.BaseModel;
+import me.ppting.retrofit.main.bean.DayGankInfo;
+import me.ppting.retrofit.main.bean.Post2GankInfo;
+import me.ppting.retrofit.main.bean.UploadInfo;
 
 /**
  * Created by PPTing on 2016/9/29.

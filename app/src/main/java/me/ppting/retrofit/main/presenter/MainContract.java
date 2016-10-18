@@ -1,15 +1,13 @@
 package me.ppting.retrofit.main.presenter;
 
 import android.app.Activity;
-import android.content.Context;
 import java.io.File;
 import java.util.List;
 import me.ppting.retrofit.base.BasePresenter;
 import me.ppting.retrofit.base.BaseView;
-import me.ppting.retrofit.main.model.DayGankInfo;
-import me.ppting.retrofit.main.model.Post2GankInfo;
-import me.ppting.retrofit.main.model.UploadInfo;
-import me.ppting.retrofit.main.view.MainActivity;
+import me.ppting.retrofit.main.bean.DayGankInfo;
+import me.ppting.retrofit.main.bean.Post2GankInfo;
+import me.ppting.retrofit.main.bean.UploadInfo;
 
 /**
  * Created by PPTing on 2016/9/26.

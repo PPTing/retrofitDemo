@@ -15,17 +15,16 @@ import me.ppting.retrofit.R;
 import me.ppting.retrofit.base.BaseActivity;
 import me.ppting.retrofit.http.HttpUtil_Gank;
 import me.ppting.retrofit.http.RequestParams;
-import me.ppting.retrofit.main.model.Add2GankService;
-import me.ppting.retrofit.main.model.DayGankInfo;
-import me.ppting.retrofit.main.model.Post2GankInfo;
-import me.ppting.retrofit.main.model.UploadInfo;
+import me.ppting.retrofit.main.bean.DayGankInfo;
+import me.ppting.retrofit.main.bean.Post2GankInfo;
+import me.ppting.retrofit.main.bean.UploadInfo;
 import me.ppting.retrofit.main.presenter.MainContract;
 import me.ppting.retrofit.main.presenter.MainPresenter;
+import me.ppting.retrofit.service.GankService;
 import me.ppting.retrofit.util.NetUtil;
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -88,14 +87,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,M
                 break;
             case R.id.post_without_mvp:
                 final long startTime = System.currentTimeMillis();
-                Add2GankService add2GankService = HttpUtil_Gank.getInstance().create(Add2GankService.class);
+                GankService gankService = HttpUtil_Gank.getInstance().create(GankService.class);
                 RequestParams requestParams = new RequestParams();
                 requestParams.addRequestParams("url","https://google.com");
                 requestParams.addRequestParams("desc","描述");
                 requestParams.addRequestParams("who","id");
                 requestParams.addRequestParams("type","Android");
                 requestParams.addRequestParams("debug",true);
-                Call<Post2GankInfo> call = add2GankService.add2Gank(requestParams.getMap());
+                Call<Post2GankInfo> call = gankService.add2Gank(requestParams.getMap());
                 call.enqueue(new Callback<Post2GankInfo>() {
                     @Override
                     public void onResponse(Call<Post2GankInfo> call, Response<Post2GankInfo> response) {

@@ -1,4 +1,4 @@
-package me.ppting.retrofit.main.model;
+package me.ppting.retrofit.main.bean;
 
 import java.util.List;
 

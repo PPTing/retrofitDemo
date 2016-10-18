@@ -40,3 +40,5 @@ captures/
 *.jks
 /gradle.properties
 /.idea
+.idea
+/projectFilesBackup

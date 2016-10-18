@@ -10,13 +10,13 @@ import org.json.JSONObject;
  */
 
 public abstract class LoginModel extends BaseModel{
-    public abstract void uploadOneFile(File file);
-    public abstract void uploadMoreFile(List<File> fileList);
-
 
     public interface LoginModelCallback{
         void loginInfo(JSONObject data);
     }
+
+    public abstract void uploadOneFile(File file);
+    public abstract void uploadMoreFile(List<File> fileList);
     public abstract void login(String username, String password);
     public abstract void getRepo(String user);
 

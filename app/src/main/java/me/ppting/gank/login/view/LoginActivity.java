@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -94,11 +95,13 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
     @Override public void loginSuccess(JSONObject data) {
         Log.d(TAG,data.toString());
+        Toast.makeText(this,data.toString(),Toast.LENGTH_SHORT).show();
     }
 
 
     @Override public void loginFailed(JSONObject data) {
         Log.d(TAG,data.toString());
+        Toast.makeText(this,data.toString(),Toast.LENGTH_SHORT).show();
     }
 
 

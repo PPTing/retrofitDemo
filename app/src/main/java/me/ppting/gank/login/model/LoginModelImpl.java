@@ -1,6 +1,7 @@
 package me.ppting.gank.login.model;
 
 import android.util.Log;
+import android.widget.Toast;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -128,6 +129,7 @@ public class LoginModelImpl extends LoginModel {
                 try {
                     Log.d(TAG,"url "+call.request().url());
                     Log.d(TAG,response.body().string());
+                    response.isSuccessful();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

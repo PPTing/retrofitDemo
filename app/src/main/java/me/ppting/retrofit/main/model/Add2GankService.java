@@ -16,5 +16,5 @@ public interface Add2GankService {
     @Headers("Content-type:application/x-www-form-urlencoded;charset=UTF-8")
     @FormUrlEncoded
     @POST("/api/add2gank")
-    Call<ResponseBody> add2Gank(@FieldMap Map<String,Object> map);
+    Call<Post2GankInfo> add2Gank(@FieldMap Map<String,Object> map);
 }

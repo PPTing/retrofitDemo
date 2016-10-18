@@ -12,7 +12,7 @@ public abstract class MainModel extends BaseModel{
 
     public interface MainModelCallback{
         void listRepo(String string);
-        void post2Gank(String string);
+        void post2Gank(Post2GankInfo info);
         void daily(DayGankInfo body);
         void uploadFile(UploadInfo uploadInfo);
     }

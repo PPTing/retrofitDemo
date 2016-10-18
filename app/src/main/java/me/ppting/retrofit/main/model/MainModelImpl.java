@@ -76,19 +76,15 @@ public class MainModelImpl extends MainModel {
         requestParams.addRequestParams("who",who);
         requestParams.addRequestParams("type",type);
         requestParams.addRequestParams("debug",debug);
-        Call<ResponseBody> call = add2GankService.add2Gank(requestParams.getMap());
-        call.enqueue(new Callback<ResponseBody>() {
+        Call<Post2GankInfo> call = add2GankService.add2Gank(requestParams.getMap());
+        call.enqueue(new Callback<Post2GankInfo>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                try {
-                    mainModelCallback.post2Gank(response.body().string());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            public void onResponse(Call<Post2GankInfo> call, Response<Post2GankInfo> response) {
+                mainModelCallback.post2Gank(response.body());
             }
 
 
-            @Override public void onFailure(Call<ResponseBody> call, Throwable t) {
+            @Override public void onFailure(Call<Post2GankInfo> call, Throwable t) {
 
             }
         });

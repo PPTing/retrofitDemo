@@ -13,6 +13,7 @@ import java.util.List;
 import me.ppting.retrofit.main.model.DayGankInfo;
 import me.ppting.retrofit.main.model.MainModel;
 import me.ppting.retrofit.main.model.MainModelImpl;
+import me.ppting.retrofit.main.model.Post2GankInfo;
 import me.ppting.retrofit.main.model.UploadInfo;
 
 /**
@@ -154,8 +155,12 @@ public class MainPresenter implements MainContract.Presenter, MainModel.MainMode
     }
 
 
-    @Override public void post2Gank(String string) {
-        mView.post2Gank(string);
+    @Override public void post2Gank(Post2GankInfo info) {
+        if (info.isError()){
+            mView.post2GankFail(info);
+        }else {
+            mView.post2GankSuccess(info);
+        }
     }
 
 

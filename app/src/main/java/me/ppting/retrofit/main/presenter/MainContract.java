@@ -7,6 +7,7 @@ import java.util.List;
 import me.ppting.retrofit.base.BasePresenter;
 import me.ppting.retrofit.base.BaseView;
 import me.ppting.retrofit.main.model.DayGankInfo;
+import me.ppting.retrofit.main.model.Post2GankInfo;
 import me.ppting.retrofit.main.model.UploadInfo;
 import me.ppting.retrofit.main.view.MainActivity;
 
@@ -25,7 +26,8 @@ public interface MainContract {
         void getDailyFail();
         void uploadFileSuccess(UploadInfo uploadInfo);
         void uploadFileFail();
-        void post2Gank(String string);
+        void post2GankSuccess(Post2GankInfo info);
+        void post2GankFail(Post2GankInfo info);
     }
 
     interface Presenter extends BasePresenter{

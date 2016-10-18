@@ -12,7 +12,17 @@
         android:id="@+id/post"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="post2gank"/>
+        android:text="post retrofit mvp"/>
+    <Button
+        android:id="@+id/post_without_mvp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="post retrofit without mvp"/>
+    <Button
+        android:id="@+id/post_only_okhttp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="只使用 okhttp "/>
     <Button
         android:id="@+id/repo"
         android:layout_width="match_parent"

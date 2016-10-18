@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import me.ppting.gank.R;
 import me.ppting.gank.base.BaseActivity;
 import me.ppting.gank.login.presenter.LoginContract;
@@ -79,7 +81,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
             case R.id.uploadMore:
                 File firstFile1 = new File(Environment.getExternalStorageDirectory() + "/icon_equipment.png");
                 File firstFile2 = new File(Environment.getExternalStorageDirectory() + "/icon_cupboard.png");
-                loginPresenter.uploadMoreFile(firstFile1,firstFile2);
+                List<File> fileList = new ArrayList<>();
+                fileList.add(firstFile1);
+                fileList.add(firstFile2);
+                loginPresenter.uploadMoreFile(fileList);
                 break;
             default:
                 break;

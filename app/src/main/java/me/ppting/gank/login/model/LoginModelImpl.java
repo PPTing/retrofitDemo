@@ -4,6 +4,7 @@ import android.util.Log;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import me.ppting.gank.http.HttpUtil_Gank;
 import me.ppting.gank.http.HttpUtil_218;
@@ -187,7 +188,7 @@ public class LoginModelImpl extends LoginModel {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
-                    Log.d(TAG,""+response.errorBody().string());
+                    Log.d(TAG,""+response.body().string());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -204,17 +205,15 @@ public class LoginModelImpl extends LoginModel {
     /**
      * 传多个文件 应该 Map<String,ResponseBody>传，其中String是为了添加
      * Content-Disposition: form-data; name="pic"; filename="icon_equipment.png"
-     * @param firstFile
-     * @param secondFile
+     * @param fileList
      */
-    @Override public void uploadMoreFile(File firstFile, File secondFile) {
-        RequestBody requestFile1 = RequestBody.create(MediaType.parse("image/png"),firstFile);
-        RequestBody requestFile2 = RequestBody.create(MediaType.parse("image/png"),secondFile);
+    @Override public void uploadMoreFile(List<File> fileList) {
+        Map<String, RequestBody> map = new HashMap<>();
+        for (File file : fileList) {
+            map.put(file.getName()+"\";filename=\""+file.getName(),RequestBody.create(MediaType.parse("image/png"),file));
+        }
 
         UploadMoreFileService uploadMoreFileService = HttpUtil_Gank.getInstance().create(UploadMoreFileService.class);
-        Map<String, RequestBody> map = new HashMap<>();
-        map.put("pic\"; filename=\""+firstFile.getName(),requestFile1);
-        map.put("pic\"; filename=\""+secondFile.getName(),requestFile2);
         Call<ResponseBody> call = uploadMoreFileService.uploadMore(map);
         call.enqueue(new Callback<ResponseBody>() {
             @Override

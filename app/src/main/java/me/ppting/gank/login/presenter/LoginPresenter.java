@@ -2,6 +2,7 @@ package me.ppting.gank.login.presenter;
 
 import android.text.TextUtils;
 import java.io.File;
+import java.util.List;
 import me.ppting.gank.login.model.LoginModel;
 import me.ppting.gank.login.model.LoginModelImpl;
 import org.json.JSONException;
@@ -105,8 +106,8 @@ public class LoginPresenter implements LoginContract.Presenter, LoginModel.Login
     /**
      * 上传多个文件
      */
-    @Override public void uploadMoreFile(File file1,File file2) {
-        loginModelImpl.uploadMoreFile(file1,file2);
+    @Override public void uploadMoreFile(List<File> fileList) {
+        loginModelImpl.uploadMoreFile(fileList);
     }
 
 

@@ -14,7 +14,7 @@ import retrofit2.http.PartMap;
 
 public interface UploadMoreFileService {
     @Multipart //这个注解为http请求报文头添加 Content-Type: multipart/form-data; boundary=5b7b2ddf-bef2-4a32-ac21-e4662ea82771
-    @POST("https://api.weibo.com/2/statuses/upload_pic.json")
+    @POST("http://api.stay4it.com/v1/public/core/?service=user.updateAvatar")
     Call<ResponseBody> uploadMore(@PartMap Map<String, RequestBody> map);
 
 

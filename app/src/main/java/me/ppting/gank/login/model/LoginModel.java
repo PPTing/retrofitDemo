@@ -1,6 +1,7 @@
 package me.ppting.gank.login.model;
 
 import java.io.File;
+import java.util.List;
 import me.ppting.gank.base.BaseModel;
 import org.json.JSONObject;
 
@@ -10,7 +11,7 @@ import org.json.JSONObject;
 
 public abstract class LoginModel extends BaseModel{
     public abstract void uploadOneFile(File file);
-    public abstract void uploadMoreFile(File file1, File file2);
+    public abstract void uploadMoreFile(List<File> fileList);
 
 
     public interface LoginModelCallback{

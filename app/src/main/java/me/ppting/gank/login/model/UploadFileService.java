@@ -14,6 +14,6 @@ import retrofit2.http.Part;
 
 public interface UploadFileService {
     @Multipart
-    @POST("https://api.weibo.com/2/statuses/upload_pic.json")
+    @POST("http://api.stay4it.com/v1/public/core/?service=user.updateAvatar")
     Call<ResponseBody> upload(@Part("access_token") RequestBody token, @Part MultipartBody.Part file);
 }

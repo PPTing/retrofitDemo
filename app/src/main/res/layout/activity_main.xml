@@ -3,16 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <EditText
-        android:id="@+id/username"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="liqiang"/>
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="abcd123"/>
     <Button
         android:id="@+id/get"
         android:layout_width="match_parent"
@@ -23,11 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="post2gank"/>
-    <Button
-        android:id="@+id/login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="login_with_post_2_218"/>
     <Button
         android:id="@+id/repo"
         android:layout_width="match_parent"

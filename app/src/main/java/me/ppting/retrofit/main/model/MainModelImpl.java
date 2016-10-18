@@ -36,7 +36,7 @@ public class MainModelImpl extends MainModel {
      */
     @Override public void getRepo(String user) {
 
-        Call<ResponseBody> call = repoService.listRepo(user);
+        Call<ResponseBody> call = githubService.listRepo(user);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {

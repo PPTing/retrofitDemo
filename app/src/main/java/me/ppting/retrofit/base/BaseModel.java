@@ -12,6 +12,6 @@ import me.ppting.retrofit.service.Stay4ItService;
 
 public abstract class BaseModel{
     public GankService gankService = HttpUtil_Gank.getInstance().create(GankService.class);
-    public GithubService repoService = HttpUtil_Github.getInstance().create(GithubService.class);
+    public GithubService githubService = HttpUtil_Github.getInstance().create(GithubService.class);
     public Stay4ItService stay4ItService = HttpUtil_Gank.getInstance().create(Stay4ItService.class);
 }

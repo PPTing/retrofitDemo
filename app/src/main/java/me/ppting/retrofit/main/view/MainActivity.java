@@ -17,7 +17,6 @@ import me.ppting.retrofit.main.bean.Post2GankInfo;
 import me.ppting.retrofit.main.bean.UploadInfo;
 import me.ppting.retrofit.main.presenter.MainContract;
 import me.ppting.retrofit.main.presenter.MainPresenter;
-import okhttp3.OkHttpClient;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener,MainContract.View{
 
@@ -27,10 +26,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,M
     private Button mUploadButton;
     private Button mUploadMoreButton;
 
-    private final static String TAG = MainActivity.class.getName();
     private MainPresenter mainPresenter;
     private long startTime;
-    private OkHttpClient okHttpClient;
 
 
 
@@ -56,7 +53,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,M
         mRepoButton.setOnClickListener(this);
         mUploadButton.setOnClickListener(this);
         mUploadMoreButton.setOnClickListener(this);
-        okHttpClient = new OkHttpClient();
     }
 
 

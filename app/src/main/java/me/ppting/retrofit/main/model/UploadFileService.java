@@ -15,5 +15,5 @@ import retrofit2.http.Part;
 public interface UploadFileService {
     @Multipart
     @POST("http://api.stay4it.com/v1/public/core/?service=user.updateAvatar")
-    Call<ResponseBody> upload(@Part("access_token") RequestBody token, @Part MultipartBody.Part file);
+    Call<UploadInfo> upload(@Part("access_token") RequestBody token, @Part MultipartBody.Part file);
 }

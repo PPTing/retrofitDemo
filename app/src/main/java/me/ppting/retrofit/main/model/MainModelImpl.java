@@ -1,6 +1,5 @@
 package me.ppting.retrofit.main.model;
 
-import android.util.Log;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -23,10 +22,9 @@ import retrofit2.Response;
 
 public class MainModelImpl extends MainModel {
     private static final String TAG = MainModelImpl.class.getName();
-    private MainModel.MainModelCallback loginModelCallback;
+    private MainModel.MainModelCallback mainModelCallback;
     public MainModelImpl(MainModel.MainModelCallback callback){
-        this.loginModelCallback = callback;
-
+        this.mainModelCallback = callback;
     }
 
 
@@ -42,8 +40,7 @@ public class MainModelImpl extends MainModel {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
-                    Log.d(TAG,""+call.request().url());
-                    Log.d(TAG,response.body().string());
+                    mainModelCallback.listRepo(response.body().string());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -84,9 +81,7 @@ public class MainModelImpl extends MainModel {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
-                    Log.d(TAG,"url "+call.request().url());
-                    Log.d(TAG,response.body().string());
-                    response.isSuccessful();
+                    mainModelCallback.post2Gank(response.body().string());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -113,7 +108,7 @@ public class MainModelImpl extends MainModel {
         call.enqueue(new Callback<DayGankInfo>() {
             @Override
             public void onResponse(Call<DayGankInfo> call, Response<DayGankInfo> response) {
-                Log.d(TAG,"get gank daily error "+response.body().isError());
+                mainModelCallback.daily(response.body());
             }
 
 
@@ -139,22 +134,17 @@ public class MainModelImpl extends MainModel {
 
         UploadFileService uploadFileService = HttpUtil_Gank.getInstance().create(UploadFileService.class);
 
-        Call<ResponseBody> call = uploadFileService.upload(
+        Call<UploadInfo> call = uploadFileService.upload(
             RequestBody.create(MediaType.parse("multipart/form-data"), "token value jai485789hqn485yhhwb "),//携带的文字信息
             body);
 
-        call.enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                try {
-                    Log.d(TAG,""+response.body().string());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        call.enqueue(new Callback<UploadInfo>() {
+            @Override public void onResponse(Call<UploadInfo> call, Response<UploadInfo> response) {
+                mainModelCallback.uploadFile(response.body());
             }
 
 
-            @Override public void onFailure(Call<ResponseBody> call, Throwable t) {
+            @Override public void onFailure(Call<UploadInfo> call, Throwable t) {
 
             }
         });
@@ -173,20 +163,15 @@ public class MainModelImpl extends MainModel {
         }
 
         UploadMoreFileService uploadMoreFileService = HttpUtil_Gank.getInstance().create(UploadMoreFileService.class);
-        Call<ResponseBody> call = uploadMoreFileService.uploadMore(map);
-        call.enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                try {
-                    Log.d(TAG,response.body().string());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        Call<UploadInfo> call = uploadMoreFileService.uploadMore(map);
+        call.enqueue(new Callback<UploadInfo>() {
+            @Override public void onResponse(Call<UploadInfo> call, Response<UploadInfo> response) {
+                mainModelCallback.uploadFile(response.body());
             }
 
 
-            @Override public void onFailure(Call<ResponseBody> call, Throwable t) {
-                t.printStackTrace();
+            @Override public void onFailure(Call<UploadInfo> call, Throwable t) {
+
             }
         });
 

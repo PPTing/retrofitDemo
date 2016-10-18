@@ -5,15 +5,9 @@ package me.ppting.retrofit.util;
  */
 
 public class NetUtil {
-    public static final String BASE_218 = "http://218.244.136.36";
     public static final String BASE_URL = "https://gank.io";
     public static final String DailyGank = "/api/day/";
     public static final String GITHUB = "https://api.github.com";
-    //请求方式
-    public static class HttpMethod{
-        public static int POST = 1;
-        public static int GET = 2;
-    }
 }
 /*
 *  1.baseUrl 跟域名 path 是绝对路径

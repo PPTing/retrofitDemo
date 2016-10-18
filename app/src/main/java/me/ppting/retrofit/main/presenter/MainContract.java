@@ -6,6 +6,8 @@ import java.io.File;
 import java.util.List;
 import me.ppting.retrofit.base.BasePresenter;
 import me.ppting.retrofit.base.BaseView;
+import me.ppting.retrofit.main.model.DayGankInfo;
+import me.ppting.retrofit.main.model.UploadInfo;
 import me.ppting.retrofit.main.view.MainActivity;
 
 /**
@@ -18,6 +20,12 @@ public interface MainContract {
         void requestPermissionSuccess();
         void requestPermissionFail();
         void showRequestTips();
+        void listRepo(String repo);
+        void getDailySuccess(DayGankInfo body);
+        void getDailyFail();
+        void uploadFileSuccess(UploadInfo uploadInfo);
+        void uploadFileFail();
+        void post2Gank(String string);
     }
 
     interface Presenter extends BasePresenter{
@@ -25,9 +33,8 @@ public interface MainContract {
         void post(String url, String desc, String who, String type, boolean debug);
         void getDayGank(String year, String month, String day);
         void getRepo(String tingya);
-        void upload(File file);
-        void uploadMoreFile(List<File> fileList);
-        void requestPermission(Activity activity);
+        void upload(Activity activity, File file);
+        void uploadMoreFile(Activity activity, List<File> fileList);
         void requestPermissionResult(int requestCode, String[] permissions, int[] grantResults);
     }
 }

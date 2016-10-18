@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 import me.ppting.retrofit.R;
 import me.ppting.retrofit.base.BaseActivity;
+import me.ppting.retrofit.main.model.DayGankInfo;
+import me.ppting.retrofit.main.model.UploadInfo;
 import me.ppting.retrofit.main.presenter.MainContract;
 import me.ppting.retrofit.main.presenter.MainPresenter;
 
@@ -33,7 +35,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,M
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
-        mainPresenter.requestPermission(this);
     }
 
 
@@ -67,7 +68,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,M
                 break;
             case R.id.upload:
                 File file = new File(Environment.getExternalStorageDirectory() + "/icon_equipment.png");
-                mainPresenter.upload(file);
+                mainPresenter.upload(this,file);
                 break;
             case R.id.uploadMore:
                 File firstFile1 = new File(Environment.getExternalStorageDirectory() + "/icon_equipment.png");
@@ -75,7 +76,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,M
                 List<File> fileList = new ArrayList<>();
                 fileList.add(firstFile1);
                 fileList.add(firstFile2);
-                mainPresenter.uploadMoreFile(fileList);
+                mainPresenter.uploadMoreFile(this,fileList);
                 break;
             default:
                 break;
@@ -111,4 +112,35 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,M
         Toast.makeText(this,"需要读取sd卡中照片进行上传，请允许",Toast.LENGTH_LONG).show();
 
     }
+
+
+    @Override public void listRepo(String repo) {
+        Toast.makeText(this,repo,Toast.LENGTH_SHORT).show();
+    }
+
+
+    @Override public void getDailySuccess(DayGankInfo body) {
+        Toast.makeText(this,"获取当天的gank成功",Toast.LENGTH_SHORT).show();
+    }
+
+
+    @Override public void getDailyFail() {
+        Toast.makeText(this,"获取当天的gank失败",Toast.LENGTH_SHORT).show();
+    }
+
+
+    @Override public void uploadFileSuccess(UploadInfo uploadInfo) {
+        Toast.makeText(this,"上传成功"+uploadInfo.getMsg(),Toast.LENGTH_SHORT).show();
+    }
+
+
+    @Override public void uploadFileFail() {
+        Toast.makeText(this,"上传失败",Toast.LENGTH_SHORT).show();
+    }
+
+
+    @Override public void post2Gank(String string) {
+        Toast.makeText(this,string,Toast.LENGTH_SHORT).show();
+    }
+
 }

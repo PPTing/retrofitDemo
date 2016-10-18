@@ -11,6 +11,10 @@ import me.ppting.retrofit.base.BaseModel;
 public abstract class MainModel extends BaseModel{
 
     public interface MainModelCallback{
+        void listRepo(String string);
+        void post2Gank(String string);
+        void daily(DayGankInfo body);
+        void uploadFile(UploadInfo uploadInfo);
     }
 
     public abstract void uploadOneFile(File file);

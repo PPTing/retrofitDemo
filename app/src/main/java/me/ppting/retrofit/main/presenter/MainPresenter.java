@@ -10,8 +10,10 @@ import android.text.TextUtils;
 import android.util.Log;
 import java.io.File;
 import java.util.List;
+import me.ppting.retrofit.main.model.DayGankInfo;
 import me.ppting.retrofit.main.model.MainModel;
 import me.ppting.retrofit.main.model.MainModelImpl;
+import me.ppting.retrofit.main.model.UploadInfo;
 
 /**
  * Created by PPTing on 2016/9/26.
@@ -22,6 +24,12 @@ public class MainPresenter implements MainContract.Presenter, MainModel.MainMode
     private MainContract.View mView;
     private MainModelImpl loginModelImpl;
     private final static int REQUEST_CODE_ASK_STORAGE_PERMISSIONS = 1;
+    private final static int UPLOAD_ONE_FILE = 10;
+    private final static int UPLOAD_MORE_FILE = 11;
+    private int action = 0;
+    private File mFile;
+    private List<File> mFileList;
+
     public MainPresenter(MainContract.View view){
         this.mView = view;
         loginModelImpl = new MainModelImpl(this);
@@ -67,12 +75,16 @@ public class MainPresenter implements MainContract.Presenter, MainModel.MainMode
     }
 
 
-    @Override public void upload(File file) {
-        if (file == null){
-            //...
-            Log.d("MainPresenter","file is null");
-        }else {
-            loginModelImpl.uploadOneFile(file);
+    @Override public void upload(Activity activity, File file) {
+        action = UPLOAD_ONE_FILE;
+        mFile = file;
+        if (!isNeedRequestPermission(activity)){
+            //不需要申请权限
+            if (file == null){
+                //...
+            }else {
+                loginModelImpl.uploadOneFile(file);
+            }
         }
     }
 
@@ -81,8 +93,13 @@ public class MainPresenter implements MainContract.Presenter, MainModel.MainMode
     /**
      * 上传多个文件
      */
-    @Override public void uploadMoreFile(List<File> fileList) {
-        loginModelImpl.uploadMoreFile(fileList);
+    @Override public void uploadMoreFile(Activity activity, List<File> fileList) {
+        action = UPLOAD_MORE_FILE;
+        mFileList = fileList;
+        if (!isNeedRequestPermission(activity)){
+            loginModelImpl.uploadMoreFile(fileList);
+        }
+
     }
 
 
@@ -90,7 +107,7 @@ public class MainPresenter implements MainContract.Presenter, MainModel.MainMode
      * 申请权限
      * @param activity
      */
-    @Override public void requestPermission(Activity activity) {
+    public boolean isNeedRequestPermission(Activity activity) {
         if (Build.VERSION.SDK_INT >= 23
             && PackageManager.PERMISSION_GRANTED != ContextCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE)){
             //用户已经拒绝过了
@@ -100,8 +117,10 @@ public class MainPresenter implements MainContract.Presenter, MainModel.MainMode
             ActivityCompat.requestPermissions(activity,
                 new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
                 REQUEST_CODE_ASK_STORAGE_PERMISSIONS);
-            return;
+            return true;
         }else {
+            //不需要申请权限
+            return false;
         }
     }
 
@@ -113,9 +132,48 @@ public class MainPresenter implements MainContract.Presenter, MainModel.MainMode
             //申请 读取存储的权限
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 mView.requestPermissionSuccess();
+                switch (action){
+                    case UPLOAD_ONE_FILE:
+                        loginModelImpl.uploadOneFile(mFile);
+                        break;
+                    case UPLOAD_MORE_FILE:
+                        loginModelImpl.uploadMoreFile(mFileList);
+                        break;
+                    default:
+                        break;
+                }
             }else if (grantResults[0] == PackageManager.PERMISSION_DENIED){
                 mView.requestPermissionFail();
             }
+        }
+    }
+
+
+    @Override public void listRepo(String repo) {
+        mView.listRepo(repo);
+    }
+
+
+    @Override public void post2Gank(String string) {
+        mView.post2Gank(string);
+    }
+
+
+    @Override public void daily(DayGankInfo body) {
+        if (!body.isError()){
+            mView.getDailySuccess(body);
+        }else {
+            mView.getDailyFail();
+        }
+    }
+
+
+
+    @Override public void uploadFile(UploadInfo uploadInfo) {
+        if (uploadInfo.getRet() == 200){
+            mView.uploadFileSuccess(uploadInfo);
+        }else {
+            mView.uploadFileFail();
         }
     }
 }
